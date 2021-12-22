@@ -1,6 +1,9 @@
 from flask import Flask, jsonify, request
 from flask_cors import CORS
 import requests
+import config
+
+APIKEY = config.apiKey
 
 
 def get_top(keyword, country ='in', category =''):
@@ -10,7 +13,7 @@ def get_top(keyword, country ='in', category =''):
         'q': keyword,
         'country': country,
         'category': category,
-        'apiKey': '7013a961703649e5bd264c33ce9e5d18'
+        'apiKey': APIKEY
     }
 
     src = requests.get(url, params=params)
