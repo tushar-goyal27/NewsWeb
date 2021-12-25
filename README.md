@@ -1,4 +1,4 @@
-# NewsWebApp
+# NewsWeb
 The news application made with ReactJs and Flask python
 
 ## Requirements
