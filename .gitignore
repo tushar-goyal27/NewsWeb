@@ -20,7 +20,9 @@
 api/__pychache__
 
 # sensitive data
-# api/config.py
+api/config.py
+api/sample_config.py
+
 
 npm-debug.log*
 yarn-debug.log*

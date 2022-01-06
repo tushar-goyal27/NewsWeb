@@ -1,10 +1,11 @@
 from flask import Flask, jsonify, request
 from flask_cors import CORS, cross_origin
 import requests
-import config
 
-APIKEY = config.apiKey
+# import config
 
+# APIKEY = config.apiKey
+APIKEY = '7013a961703649e5bd264c33ce9e5d18'
 
 def get_top(keyword, country ='in', category =''):
     url = 'https://newsapi.org/v2/top-headlines'
