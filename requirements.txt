@@ -6,3 +6,4 @@ jsonify==0.5
 lxml==4.7.1
 requests==2.26.0
 Werkzeug==2.0.2
+config==0.5.1
