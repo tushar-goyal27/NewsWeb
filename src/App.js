@@ -6,11 +6,11 @@ import InputKey from './components/InputKey';
 
 function App() {
   const [artList, setArtList]= useState([])
-  
+
   const getdata = (e, keyword, country) => {
     // call back function
     e.preventDefault();
-    fetch("http://localhost:5000/news", {
+    fetch("https://newspyjs.herokuapp.com/news", {
       headers: {
         'Content-Type': 'application/json',
         'Accept': 'application/json'
@@ -37,7 +37,7 @@ function App() {
 };
 
 // const waterEffect = {
-//   "background": "rgb(84, 164, 222)", 
+//   "background": "rgb(84, 164, 222)",
 //   "height": "10%"
 // }
 export default App;
