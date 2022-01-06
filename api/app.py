@@ -33,6 +33,7 @@ def news():
     print(data["keyword"])
     return get_top(data["keyword"], data["country"])
 
+@app.route("/", methods=['GET'])
 def serve():
     return send_from_directory(app.static_folder, 'index.html')
 
