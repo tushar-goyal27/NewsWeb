@@ -1,5 +1,5 @@
 from flask import Flask, jsonify, request
-from flask_cors import CORS
+from flask_cors import CORS, cross_origin
 import requests
 import config
 
@@ -22,12 +22,18 @@ def get_top(keyword, country ='in', category =''):
 
     return jsonify({'articles': articles})
 
-app = Flask(__name__)
+app = Flask(__name__, static_folder='../build', static_url_path='')
 CORS(app)
 
 @app.route("/news", methods=['POST'])
+@cross_origin()
 def news():
     data = request.json
     print(data["keyword"])
     return get_top(data["keyword"], data["country"])
 
+def serve():
+    return send_from_directory(app.static_folder, 'index.html')
+
+if __name__ == '__main__':
+    app.run()

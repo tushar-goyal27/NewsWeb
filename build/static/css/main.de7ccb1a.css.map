@@ -1,0 +1,1 @@
+{"version":3,"file":"static/css/main.de7ccb1a.css","mappings":"AAAA,WACI,yBACJ,CAEA,iBACE,qCACF,CAEA,cACI,sBAAe,CAAf,cACF","sources":["App.css"],"sourcesContent":[".shadowbox {\r\n    transition: box-shadow .3s;\r\n}\r\n\r\n.shadowbox:hover {\r\n  box-shadow: 0 0 11px rgba(33,33,33,.2); \r\n}\r\n\r\n.card-columns {\r\n    column-count: 4;\r\n  }"],"names":[],"sourceRoot":""}
