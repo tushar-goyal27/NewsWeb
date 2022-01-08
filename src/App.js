@@ -24,14 +24,12 @@ function App() {
   // function to show search results
   const getdata = (e, keyword) => {
     e.preventDefault();
-    // fetch("https://newspyjs.herokuapp.com/news", {
     fetch("http://127.0.0.1:5000/news?" + new URLSearchParams({'keyword': keyword}), {
       headers: {
         'Content-Type': 'application/json',
         'Accept': 'application/json'
       },
       method: 'GET',
-      // body: JSON.stringify()
     })
     .then(res => res.json())
     .then(data => {
@@ -42,7 +40,7 @@ function App() {
   return (
     <div className="container-fluid">
       <div className="mt-3">
-        <InputKey getnewsdata={ (e, keyword, country) => getdata(e, keyword, country) }/>
+        <InputKey getnewsdata={ (e, keyword) => getdata(e, keyword) }/>
       </div>
       <div>
         {artList && <ArticleList listOfArcticles={artList} />}

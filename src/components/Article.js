@@ -2,7 +2,7 @@ import React from 'react'
 
 function Article({articleObj}) {
     return (
-        <div className="card shadowbox" style={{ "width": "300px"}}>
+        <div className="card shadowbox" style={{"width": "300px"}}>
             <img className="card-img-top" src={articleObj.urlToImage} alt="Card"></img>
             <div className="card-body" >
                 <h4 className="card-title" style={{ "fontFamily": "Merriweather, serif"}}> {articleObj.title} </h4>
@@ -19,4 +19,3 @@ function Article({articleObj}) {
 }
 
 export default Article
-

@@ -3,9 +3,26 @@
 }
 
 .shadowbox:hover {
-  box-shadow: 0 0 11px rgba(33,33,33,.2); 
+  box-shadow: 0 0 11px rgba(33,33,33,.2);
 }
 
-.card-columns {
-    column-count: 4;
+@media screen and (min-width: 1440px) {
+  .card-columns {
+      column-count: 4;
   }
+}
+
+@media screen and (max-width: 900px) {
+  .card-columns {
+      column-count: 2;
+  }
+}
+
+@media screen and (max-width: 600px) {
+  .card-columns {
+      column-count: 1;
+  }
+  .card {
+    margin: auto;
+  }
+}
