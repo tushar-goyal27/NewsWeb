@@ -1,6 +1,8 @@
 # NewsWeb
 The news application made with ReactJs and Flask python
 
+Hosted on heroku: https://newspyjs.herokuapp.com
+
 ## Requirements
 - Node and ReactJs
 - Flask(python)
