@@ -19,7 +19,7 @@ def news():
     keyword = request.args.get('keyword')
     url = 'https://newsapi.org/v2/everything'
     params = {
-        'q': keyword,
+        'qInTitle': keyword,
         'apiKey': APIKEY
     }
 
