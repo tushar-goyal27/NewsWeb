@@ -8,7 +8,7 @@ function App() {
 
   // funtion to display top headlines
   useEffect(async () => {
-    fetch("https://newspyjs.herokuapp.com/headlines", {
+    fetch("http://localhost:5000/headlines", {
       headers: {
         'Content-Type': 'application/json',
         'Accept': 'application/json'
@@ -24,7 +24,7 @@ function App() {
   // function to show search results
   const getdata = (e, keyword) => {
     e.preventDefault();
-    fetch("https://newspyjs.herokuapp.com/news?" + new URLSearchParams({'keyword': keyword}), {
+    fetch("http://localhost:5000/news?" + new URLSearchParams({'keyword': keyword}), {
       headers: {
         'Content-Type': 'application/json',
         'Accept': 'application/json'
