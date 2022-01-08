@@ -9,23 +9,8 @@ load_dotenv()
 
 APIKEY = os.getenv('APIKEY')
 
-def get_top(keyword, country ='in'):
-    url = 'https://newsapi.org/v2/top-headlines'
-
-    params = {
-        'q': keyword,
-        'country': country,
-        'apiKey': APIKEY
-    }
-
-    src = requests.get(url, params=params)
-
-    articles = src.json()['articles']
-
-    return jsonify({'articles': articles})
-
-# app = Flask(__name__, static_folder='../build', static_url_path='')
-app = Flask(__name__)
+app = Flask(__name__, static_folder='../build', static_url_path='')
+# app = Flask(__name__)
 CORS(app)
 
 @app.route("/news", methods=['GET'])
@@ -57,9 +42,9 @@ def headlines():
 
     return jsonify({'articles': articles})
 
-# @app.route("/", methods=['GET'])
-# def serve():
-#     return send_from_directory(app.static_folder, 'index.html')
+@app.route("/", methods=['GET'])
+def serve():
+    return send_from_directory(app.static_folder, 'index.html')
 
 if __name__ == '__main__':
     app.run()
