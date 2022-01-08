@@ -3,7 +3,6 @@ import React, { useState } from 'react'
 function InputKey(props) {
     const [formkey, setKey] = useState('')
     const [country, setCountry] = useState('in')
-    const [category, setCategory] = useState('')
     return (
         <nav className="navbar navbar-light bg-light pt-3">
             <a className="navbar-brand mb-2" style={{ "fontFamily": "Merriweather, serif"}}>News App</a>

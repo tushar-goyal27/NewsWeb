@@ -1,19 +1,20 @@
+import os
+
 from flask import Flask, jsonify, request, send_from_directory
 from flask_cors import CORS, cross_origin
 import requests
+from dotenv import load_dotenv
 
-# import config
+load_dotenv()
 
-# APIKEY = config.apiKey
-APIKEY = '7013a961703649e5bd264c33ce9e5d18'
+APIKEY = os.getenv('APIKEY')
 
-def get_top(keyword, country ='in', category =''):
+def get_top(keyword, country ='in'):
     url = 'https://newsapi.org/v2/top-headlines'
 
     params = {
         'q': keyword,
         'country': country,
-        'category': category,
         'apiKey': APIKEY
     }
 
@@ -23,19 +24,42 @@ def get_top(keyword, country ='in', category =''):
 
     return jsonify({'articles': articles})
 
-app = Flask(__name__, static_folder='../build', static_url_path='')
+# app = Flask(__name__, static_folder='../build', static_url_path='')
+app = Flask(__name__)
 CORS(app)
 
-@app.route("/news", methods=['POST'])
+@app.route("/news", methods=['GET'])
 @cross_origin()
 def news():
-    data = request.json
-    print(data["keyword"])
-    return get_top(data["keyword"], data["country"])
+    keyword = request.args.get('keyword')
+    url = 'https://newsapi.org/v2/everything'
+    params = {
+        'q': keyword,
+        'apiKey': APIKEY
+    }
 
-@app.route("/", methods=['GET'])
-def serve():
-    return send_from_directory(app.static_folder, 'index.html')
+    src = requests.get(url, params=params)
+    articles = src.json()['articles']
+
+    return jsonify({'articles': articles})
+
+@app.route("/headlines", methods=['GET'])
+@cross_origin()
+def headlines():
+    url = 'https://newsapi.org/v2/top-headlines'
+    params = {
+        'country': 'in',
+        'apiKey': APIKEY
+    }
+
+    src = requests.get(url, params=params)
+    articles = src.json()['articles']
+
+    return jsonify({'articles': articles})
+
+# @app.route("/", methods=['GET'])
+# def serve():
+#     return send_from_directory(app.static_folder, 'index.html')
 
 if __name__ == '__main__':
     app.run()

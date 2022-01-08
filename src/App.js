@@ -1,25 +1,40 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import './App.css';
 import ArticleList from './components/ArticleList';
 import InputKey from './components/InputKey';
 
-
 function App() {
-  const [artList, setArtList]= useState([])
+  const [artList, setArtList]= useState([]);
 
-  const getdata = (e, keyword, country) => {
-    // call back function
-    e.preventDefault();
-    fetch("https://newspyjs.herokuapp.com/news", {
+  // funtion to display top headlines
+  useEffect(async () => {
+    fetch("http://127.0.0.1:5000/headlines", {
       headers: {
         'Content-Type': 'application/json',
         'Accept': 'application/json'
       },
-      method: 'POST',
-      body: JSON.stringify({'keyword': keyword, 'country': country})
-    }).
-    then(res => res.json()).
-    then(data => {
+      method: 'GET',
+    })
+    .then(res => res.json())
+    .then(data => {
+      setArtList(data.articles)
+    });
+  }, []);
+
+  // function to show search results
+  const getdata = (e, keyword) => {
+    e.preventDefault();
+    // fetch("https://newspyjs.herokuapp.com/news", {
+    fetch("http://127.0.0.1:5000/news?" + new URLSearchParams({'keyword': keyword}), {
+      headers: {
+        'Content-Type': 'application/json',
+        'Accept': 'application/json'
+      },
+      method: 'GET',
+      // body: JSON.stringify()
+    })
+    .then(res => res.json())
+    .then(data => {
       setArtList(data.articles)
     });
   }
@@ -36,8 +51,4 @@ function App() {
   );
 };
 
-// const waterEffect = {
-//   "background": "rgb(84, 164, 222)",
-//   "height": "10%"
-// }
 export default App;
